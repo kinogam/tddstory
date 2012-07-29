@@ -1,19 +1,32 @@
 ﻿(function (window) {
-    var amount = 0;
+    var productList = [];
 
     var c = {
+        init: function () {
+            productList = [];
+        },
         add: function (goods) {
             if (Object.prototype.toString.call(goods) === '[object Array]') {
-                for (var i = 0; i < goods.length; i++) {
-                    amount += goods[i].price * goods[i].number;
-                }
+                productList.push.apply(productList, goods);
             }
             else {
-                amount += goods.price * goods.number;
+                productList.push(goods);
             }
         },
         totalPrice: function () {
+            var amount = 0;
+            for (var i = 0; i < productList.length; i++) {
+                amount += productList[i].price * productList[i].number;
+            }
             return amount;
+        },
+        remove: function (id) {
+            for (var i = 0; i < productList.length; i++) {
+                if (productList[i].id == id) {
+                    productList.splice(i, 1);
+                    break;
+                }
+            }
         }
     };
 
