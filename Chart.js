@@ -27,6 +27,14 @@
                     break;
                 }
             }
+        },
+        changeNum: function (id, num) {
+            for (var i = 0; i < productList.length; i++) {
+                if (productList[i].id == id) {
+                    productList[i].number = num;
+                    break;
+                }
+            }
         }
     };
 

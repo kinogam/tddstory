@@ -29,6 +29,12 @@ suite("Chart", function () {
             Chart.remove("2");
             assert.equal(Chart.totalPrice(), 150);
         });
+
+        test("修改商品数量", function () {
+            Chart.add(data);
+            Chart.changeNum("1", 2);
+            assert.equal(Chart.totalPrice(), 250);
+        });
     });
 });
 
