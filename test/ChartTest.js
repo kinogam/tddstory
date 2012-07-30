@@ -35,6 +35,14 @@ suite("Chart", function () {
             Chart.changeNum("1", 2);
             assert.equal(Chart.totalPrice(), 250);
         });
+
+        test("导出当前的商品列表", function () {
+            Chart.add(data);
+            var exportData = Chart.getProductList();
+            assert.equal(exportData.length, 2);
+            assert.equal(exportData[0].name, '逻辑与计算机设计基础');
+            assert.equal(exportData[1].name, '3D游戏编程大师技巧');
+        });
     });
 });
 
