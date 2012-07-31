@@ -7,9 +7,27 @@
         },
         add: function (goods) {
             if (Object.prototype.toString.call(goods) === '[object Array]') {
+                for (var i = 0; i < productList.length; i++) {
+                    for (var j = 0; j < goods.length; j++) {
+                        if (productList[i].id == goods[j].id) {
+                            productList[i].number += goods[j].number;
+                            goods.splice(j, 1);
+                            break;
+                        }
+                    }
+                    if (goods.length == 0) {
+                        return;
+                    }
+                }
                 productList.push.apply(productList, goods);
             }
             else {
+                for (var i = 0; i < productList.length; i++) {
+                    if (productList[i].id == goods.id) {
+                        productList[i].number += goods.number;
+                        return;
+                    }
+                }
                 productList.push(goods);
             }
         },
@@ -35,6 +53,9 @@
                     break;
                 }
             }
+        },
+        getProductList: function () {
+            return productList;
         }
     };
 
